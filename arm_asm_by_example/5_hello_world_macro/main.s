@@ -1,4 +1,4 @@
-.include "print.s"
+.include "../commons/print.s"
 
 .global _start
 

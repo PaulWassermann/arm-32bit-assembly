@@ -9,7 +9,7 @@ deduplicate bytes in a byte sequence
         - r3 to store the current character 
 */
 
-.include    "print.s"
+.include    "../commons/print.s"
 
 .global _start
 
@@ -66,4 +66,4 @@ output: .fill           128, 1, 0   // Since the reserved space for the output
                                     // need to append a null byte
 
 before: .string         "Before: "
-after: .string          "After: "
+after:  .string          "After: "
