@@ -71,7 +71,7 @@ log_info "Assembling $SRC..."
 arm-linux-gnueabihf-as $DEBUG_OPTS -o "$OBJ" "$SRC"
 
 log_info "Linking $OBJ..."
-arm-linux-gnueabihf-ld $DEBUG_OPTS -o "$OUT" "$OBJ"
+arm-linux-gnueabihf-ld -o "$OUT" "$OBJ"
 
 log_info "Build successful: $OUT"
 
