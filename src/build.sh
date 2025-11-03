@@ -4,7 +4,6 @@ set -e
 
 DEBUG_OPTS=""
 PROGRAM=""
-VERBOSE=false
 
 INFO_PREFIX="[+]"
 ERROR_PREFIX="[x]"
@@ -18,10 +17,9 @@ log_error() {
 }
 
 print_usage() {
-    log_info "Usage: $0 -p <program-number> [-d] [-v]"
+    echo "Usage: $0 -p <program-number> [-d] [-h]"
     echo "   -p <program-number>  Program number to build (mandatory)"
-    echo "   -d                   Enable debug symbols (-g)"
-    echo "   -v                   Verbose output (show commands)"
+    echo "   -d                   Enable debug symbols for the assembler"
     echo "   -h                   Show this help message"
     exit "$1"
 }
@@ -31,7 +29,6 @@ do
     case "${flags}" in
         p)PROGRAM="$OPTARG";;
         d)DEBUG_OPTS="-g";;
-        v)VERBOSE=true;;
         h)print_usage 0;;
         *)print_usage 1;;
     esac
@@ -52,10 +49,6 @@ else
     cd "$FOLDER"
 fi
 
-if [ "$VERBOSE" = true ]; then
-    set -x 
-fi
-
 mkdir -p obj bin
 
 SRC="main.s"
@@ -74,9 +67,5 @@ log_info "Linking $OBJ..."
 arm-linux-gnueabihf-ld -o "$OUT" "$OBJ"
 
 log_info "Build successful: $OUT"
-
-if [ "$VERBOSE" = true ]; then
-    set +x 
-fi
 
 cd - > /dev/null
