@@ -23,6 +23,8 @@ Usage: ./build.sh -p <program-number> [-d] [-h]
    -h                   Show this help message
 ```
 
+I am currently switching to a build system relying on `make` and `Makefile`s which is a lot more powerful and fun to learn.
+
 ## Resources
 
 * [ARM Assembly By Example](https://armasm.com/)
