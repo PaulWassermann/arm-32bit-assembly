@@ -4,18 +4,17 @@
 //      - r0 to store STDOUT file descriptor
 //      - r1 to load the adress of the string
 //      - r2 to accumulate the number of characters in the string
-//      - r3 to store the length of the string
-//      - r4 to store the current character
+//      - r3 to store the current character
 
-.macro  print   str
+.macro  print   str:req
 
         ldr     r1, =\str
         mov     r2, #0
 
 1:
-        ldrb    r4, [r1, r2]
+        ldrb    r3, [r1, r2]
         add     r2, #1
-        cmp     r4, #0
+        cmp     r3, #0
         beq     2f
         b       1b
 
@@ -24,4 +23,5 @@
         mov     r0, #1
         // r1 and r2 are already set
         svc     0
+
 .endm
