@@ -14,8 +14,7 @@ in-place.
 
 _start:
         print   before
-        print   adn_seq
-        print   newline
+        print   adn_seq, '\n'
 
         ldr     r0, =adn_seq
 
@@ -42,8 +41,7 @@ loop:
 
 exit:
         print   after
-        print   adn_seq
-        print   newline
+        print   adn_seq, '\n'
 
         mov     r7, #1
         mov     r0, #0
@@ -53,4 +51,3 @@ exit:
 adn_seq:    .string     "GTACGATGATCACCAGTTACCAAAGCATTACGGAGTGTC"
 before:     .string     "Initial sequence: "
 after:      .string     "Complemented sequence: "
-newline:    .string     "\n"

@@ -3,11 +3,11 @@
 .global _start
 
 _start:
-        print   msg
+        print   msg, '\n'
 
         mov     r7, #1
         mov     r0, #0
         svc     0
 
 .data
-msg:    .string     "Hello, World!\n"
+msg:    .string     "Hello, World!"

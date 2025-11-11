@@ -144,9 +144,7 @@ write:
 
 exit:
         print   before
-        mov     r0, #'\n'
-        strb    r0, [r3]
-        print   output
+        print   output, '\n'
 
         mov     r7, #1
         mov     r0, #0
