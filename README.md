@@ -1,4 +1,4 @@
-# arm-32bit-assembler
+# arm-32bit-assembly
 
 This repository contains small programs I wrote to get familiar with ARM 32-bit assembly.
 
