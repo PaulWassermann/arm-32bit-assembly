@@ -1,13 +1,36 @@
-all: clean main.elf
+BIN_DIR = bin
+OBJ_DIR = obj
+SRC_DIR = .
 
-OBJS = main.o
+ELF  = main
+SRCS = $(wildcard $(SRC_DIR)/*.s)
+OBJS = $(addprefix $(OBJ_DIR)/, $(patsubst %.s,%.o,$(notdir $(SRCS))))
 
-%.o: %.s
+# Debug variables
+DEBUG_DIR = debug
+DEBUG_FLAGS = -g --warn --info --fatal-warnings
+DEBUG_OBJS = $(addprefix $(DEBUG_DIR)/, $(OBJS))
+DEBUG_TARGET = $(DEBUG_DIR)/$(BIN_DIR)/$(ELF)
+
+# Phony targets declaration
+.PHONY: all clean debug debug-session
+
+# Debug rules
+debug: $(DEBUG_TARGET)
+
+$(DEBUG_DIR)/$(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
+	@mkdir -p $(DEBUG_DIR)/$(OBJ_DIR)
 	arm-none-eabi-as -g -o $@ $<
 
-main.elf: $(OBJS)
+$(DEBUG_TARGET): $(DEBUG_OBJS)
+	@mkdir -p $(DEBUG_DIR)/$(BIN_DIR)
 	arm-none-eabi-ld -Ttext=0x08000000 -o $@ $^
 
-.PHONY: clean
+# Shared targets
+all: clean main.elf
+
 clean:
-	rm main.elf *.o
+	rm -rf $(DEBUG_DIR) $(RELEASE_DIR)
+
+debug-session: debug
+	gdb -x conf.gdb $(DEBUG_TARGET)
