@@ -41,10 +41,15 @@ I am currently switching to a build system relying on `make` and `Makefile`s whi
 * [2] [Compiling to assembly from scratch - Chapter 7](https://keleshev.com/compiling-to-assembly-from-scratch/07-arm-assembly-programming)
 * [3] [ARM documentation](https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions)
 * [4] [Procedure Call Standard for Arm Architecture - AAPCS](https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst#the-base-procedure-call-standard)
+* [5] [GNU Assembler Directives](https://sourceware.org/binutils/docs/as/Pseudo-Ops.html)
 
 ### STM32F3x
 
-* [5] [ARM-ASM-Tutorial](https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial#Microcontroller_selection)
+* [6] [ARM-ASM-Tutorial](https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial#Microcontroller_selection)
+* [7] [Using GNU ld - Linker Scripts](https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_6.html)
+* [8] [STM32F303VC - Datasheet](https://www.st.com/resource/en/datasheet/stm32f303cb.pdf)
+* [9] [STM32F303VC - Reference manual](https://www.st.com/resource/en/reference_manual/rm0316-stm32f303xbcde-stm32f303x68-stm32f328x8-stm32f358xc-stm32f398xe-advanced-armbased-mcus-stmicroelectronics.pdf)
+* [10] [STM32 Cortex-M4 - Programming manual](https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf)
 
 ## License
 
