@@ -2,13 +2,9 @@
 .cpu cortex-m4
 .thumb
 
-@ TODO: better documentation
+.include        "src/vector_table.s"
 
-// Found on https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial#Clock_Configuration
-// but needs some digging to understand
-.word 0x20000400
-.word 0x080000ed
-.space 0xe4
+@ TODO: better documentation
 
 // Reset and Clock Control module
 .equ    RCC_ADDR,       0x40021000
@@ -21,12 +17,17 @@
 // We use GPIOE because it's where the STM32F303VC discovery board LED are
 // connected (on pins 8 to 15)
 .equ    GPIOE_ADDR,     0x48001000
-.equ    GPIOE_MODER,    (GPIOE_ADDR + 0x00)         // Port mode register
-.equ    GPIOE_OTYPER,   (GPIOE_ADDR + 0x04)         // Port output type register
+.equ    GPIOE_MODER,    (GPIOE_ADDR + 0x00)     // Port mode register
+.equ    GPIOE_OTYPER,   (GPIOE_ADDR + 0x04)     // Port output type register
 .equ    GPIOE_ODR,      (GPIOE_ADDR + 0x14)
-
+.equ    GPIOE_BSRR,     (GPIOE_ADDR + 0x18)     // Port bit set and reset
+                                                // register
 // Orange LED pin
-.equ    PIN,            10
+.equ    PIN,            11
+
+.type   _ResetHandler, %function
+.global _ResetHandler
+_ResetHandler:
 
 .global _start
 _start:
