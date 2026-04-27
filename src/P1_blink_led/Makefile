@@ -15,6 +15,9 @@ DEBUG_FLAGS = -g --warn --info --fatal-warnings
 DEBUG_OBJS = $(addprefix $(DEBUG_DIR)/, $(OBJS))
 DEBUG_TARGET = $(DEBUG_DIR)/$(BIN_DIR)/$(ELF)
 
+flash-program:
+	openocd -f interface/stlink.cfg -f target/stm32f3x.cfg -c "program $(DEBUG_TARGET) verify reset exit"
+
 # Phony targets declaration
 .PHONY: all clean debug debug-session
 
