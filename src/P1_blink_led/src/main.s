@@ -1,12 +1,26 @@
-.syntax unified
+// Assembler directives 
+
+// Use the unified syntax (between ARM and THUMB instruction sets)
+.syntax unified 
+
+// Programming manual (page 1)
 .cpu cortex-m4
+
+// Cortex-M4 documentation
+.arch armv7-m
+
+// Programming manual, 3.1 "Instruction set summary" (page 50)
 .thumb
 
 .include        "src/vector_table.s"
 
-@ TODO: better documentation
-
 // Reset and Clock Control module
+// Reference manual, 3.1.5 "BusMatrix" (page 52) states:
+// "Before using a peripheral the user has to enable its clock in the 
+// RCC_AHBENR, RCC_APB2ENR or RCC_APB1ENR register"
+
+// Reference manual, 3.2.2 "Memory map and register boundary addresses"
+// (page 54)
 .equ    RCC_ADDR,       0x40021000
 .equ    RCC_AHBENR,     (RCC_ADDR + 0x14)       // Advanced High-performance
                                                 // bus peripheral clock enable 
@@ -23,7 +37,7 @@
 .equ    GPIOE_BSRR,     (GPIOE_ADDR + 0x18)     // Port bit set and reset
                                                 // register
 // Orange LED pin
-.equ    PIN,            11
+.equ    PIN,            10
 
 .type   _ResetHandler, %function
 .global _ResetHandler
